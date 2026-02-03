@@ -1,0 +1,21 @@
+
+services:
+  backend:
+    build: ./backend
+    container_name: playto-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=1
+
+  frontend:
+    build: ./frontend
+    container_name: playto-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
